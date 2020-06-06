@@ -6,12 +6,12 @@
 
 
 <p align="center">
-  <a href="#print_of_project">Print Of Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#prints_of_project">Prints Of Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#rocket-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#information_source-how-to-use">How To Use</a>
 </p>
 
-## Print Of Projects
+## Prints Of Project
 -  <a href="public/Prints/Pagina-inicial.PNG">Home-page</a>
 -  <a href="public/Prints/Cadastro de entidades.PNG">Create-entity</a>
 -  <a href="public/Prints/Pesquisas.PNG">Search-page</a>
