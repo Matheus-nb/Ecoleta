@@ -30,6 +30,7 @@ This project was developed to train my skills in back-end and front-end with the
 ### BACK-END
 -  [Nunjucks][Nunjucks]
 -  [SQlite][SQlite]
+-  [Java-Script][Java-Script]
 
 ## :information_source: How To Use
 
