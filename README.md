@@ -12,10 +12,10 @@
 </p>
 
 ## Print Of Projects
-<a href="public/Prints/Pagina-inicial.PNG">Home-page</a>
-<a href="public/Prints/Cadastro de entidades.PNG">Create-entity</a>
-<a href="public/Prints/Pesquisas.PNG">Search-page</a>
-<a href="public/Prints/Cadastro concluido.PNG">Entity-created</a>
+-  <a href="public/Prints/Pagina-inicial.PNG">Home-page</a>
+-  <a href="public/Prints/Cadastro de entidades.PNG">Create-entity</a>
+-  <a href="public/Prints/Pesquisas.PNG">Search-page</a>
+-  <a href="public/Prints/Cadastro concluido.PNG">Entity-created</a>
 
 ## :rocket: Technologies
 
