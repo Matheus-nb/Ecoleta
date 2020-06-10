@@ -72,8 +72,6 @@ document
 // PARTE DOS ITENS DE COLETA, ADICIONAR O CSS E PASSAR QUAL DOS ITENS FOI SELECIONADO.
 const itemsToCollect = document.querySelectorAll(".items-grid li")
 
-console.log('TESTE', itemsToCollect);
-
 for (const item of itemsToCollect) {
     item.addEventListener ("click", handleSelectedItem) // ADICIONAR EVENTO DE "CLICK" NA LISTA (CSS E SELEÇÃO)
 }
@@ -82,7 +80,17 @@ const collectedItems = document.querySelector("input[name=items]")
 
 let selectedItems = [] // ITENS SELECIONADOS
 
-console.log(collectedItems);
+function handleEditSelectedItems() {
+    const items = collectedItems.value.split(',');
+
+    itemsToCollect.forEach(item => {
+        if (items.includes(item.getAttribute('data-id'))) {
+            item.classList.toggle("selected") //CSS
+        }
+    });
+}
+
+handleEditSelectedItems();
 
 function handleSelectedItem(event) {
     const itemLi = event.target //CSS
