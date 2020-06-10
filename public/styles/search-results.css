@@ -102,6 +102,15 @@ main .card p {
     color: #6C6C80;
 }
 
+#delet {
+    margin-right: 16px;
+    display: flex;
+
+    background-image: url("../icones/trash.svg");
+
+    width: 20px;
+    height: 20px;
+}
 
 
 

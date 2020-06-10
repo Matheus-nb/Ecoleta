@@ -34,6 +34,67 @@ server.get("/create-point", (req,res) => {
     return res.render("create-point.html")
 }) 
 
+server.get("/edit/:id", (req,res) => {
+
+    //REQ.QUERY:QUERY STRINGS DA NOSSA URL 
+    const id = req.params.id;
+
+    db.all(`SELECT * FROM places WHERE id LIKE '%${id}%' `, function(err,rows) {
+        if(err) {
+            return console.log(err)
+        }
+
+        // MOSTRAR A PAGINA HTML COM OS DADOS DO BANCO DE DADOS
+        console.log(rows)
+        return res.render("edit-entity.html", { places: rows} )
+    })
+}) 
+
+server.post("/editpoint/:id", (req,res) => {
+
+    // REQ.BODY: O CORPO DO NOSSO FORMULÁRIO
+    // console.log(req.body)
+    const id = req.params.id
+    // INSERIR DADOS NO BANCO DE DADOS
+    const query = `
+        UPDATE places SET 
+            image=?,
+            name=?,
+            address=?,
+            address2=?,
+            state=?,
+            city=?,
+            items=? 
+        WHERE id = ${id}
+    `
+
+    const values = [
+        req.body.image,
+        req.body.name,
+        req.body.address,
+        req.body.address2,
+        req.body.state,
+        req.body.city,
+        req.body.items,
+    ]
+
+    function afterInsertData(err) {
+        if(err) {
+            console.log(err)
+            return res.render("index.html",{ Nsaved:true })
+        }
+
+        console.log("Editado com sucesso")
+        console.log(this)
+
+        return res.render("index.html", { saved:true })
+    }
+
+
+    db.run(query, values, afterInsertData)
+
+})
+
 server.post("/savepoint", (req,res) => {
 
     // REQ.BODY: O CORPO DO NOSSO FORMULÁRIO
@@ -103,6 +164,22 @@ server.get("/search", (req,res) => {
         return res.render("search-results.html", { places: rows, total})
     })
 })
+
+server.get("/search/:id", function(req,res) {
+    const id = req.params.id;
+    const query = `
+        DELETE FROM places where id = ${id};
+    `;
+  
+    db.run(query, function(err) {
+      if(err) {
+        console.log(err);
+        return res.send("Erro ao deletar no banco de dados!");
+      }
+  
+      return res.redirect('/');
+    })
+  })
 
 
 
