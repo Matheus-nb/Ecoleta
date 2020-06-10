@@ -51,17 +51,17 @@
             <div class="field-group">
                 <div class="field">
                     <label for="state">Estado</label>
-                    <select name="uf" value="{{place.state}}" >
-                        <option value="">Selecione o Estado</option>
+                    <select name="uf" value="{{place.state}}">
+                        <option value="{{place.state}}">{{place.state}}</option>
                     </select>
 
-                    <input type="hidden" name="state">
+                    <input type="hidden" name="state" value="{{place.state}}">
                 </div>
 
                 <div class="field">
                     <label for="city">Cidade</label>
                     <select name="city" disabled="disabled" value="{{place.city}}" >
-                        <option value="">Selecione a Cidade</option>
+                        <option value="{{place.city}}">{{place.city}}</option>
                     </select>
                 </div>
             </div>

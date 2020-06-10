@@ -1,19 +1,42 @@
 function populateUFs () {
-    const ufSelect = document.querySelector("select[name=uf]")
+    const ufSelect = document.querySelector("select[name=uf]");
 
     fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados")
     .then( res => res.json() )
-    .then( states => { 
+    .then( states => {
 
         for (const state of states){
             ufSelect.innerHTML += `<option value="${state.id}">${state.nome}</option>`
         }
-         
+
+        if (ufSelect.value) {
+            const { id: idState } = states.filter(state => state.nome === ufSelect.value)[0];
+
+            getCitiesWithState(idState);
+        }         
+    })
+
+    const stateInput = document.querySelector("input[name=state]");
+}
+
+function getCitiesWithState(uf) {
+    const citySelect = document.querySelector("select[name=city]")
+
+    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`
+
+    fetch(url)
+    .then( res => res.json() )
+    .then( cities => { 
+        
+        for (const city of cities){
+            citySelect.innerHTML += `<option value="${city.nome}">${city.nome}</option>`
+        }
+
+        citySelect.disabled = false
     })
 }
 
 populateUFs ()
-
 
 function getCities(event) {
     const citySelect = document.querySelector("select[name=city]")
@@ -21,10 +44,8 @@ function getCities(event) {
 
     const ufValue = event.target.value
 
-
     const indexOfSelectedState = event.target.selectedIndex
     stateInput.value = event.target.options [indexOfSelectedState].text
-
 
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${ufValue}/municipios`
 
@@ -42,23 +63,16 @@ function getCities(event) {
         citySelect.disabled = false
          
     })
-
 }
-
-
-
-
 
 document
     .querySelector("select[name=uf]")
-    .addEventListener("change", getCities )
-
-
-
-   
+    .addEventListener("change", getCities )  
   
 // PARTE DOS ITENS DE COLETA, ADICIONAR O CSS E PASSAR QUAL DOS ITENS FOI SELECIONADO.
 const itemsToCollect = document.querySelectorAll(".items-grid li")
+
+console.log('TESTE', itemsToCollect);
 
 for (const item of itemsToCollect) {
     item.addEventListener ("click", handleSelectedItem) // ADICIONAR EVENTO DE "CLICK" NA LISTA (CSS E SELEÇÃO)
@@ -67,6 +81,8 @@ for (const item of itemsToCollect) {
 const collectedItems = document.querySelector("input[name=items]")
 
 let selectedItems = [] // ITENS SELECIONADOS
+
+console.log(collectedItems);
 
 function handleSelectedItem(event) {
     const itemLi = event.target //CSS
