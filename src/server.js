@@ -161,25 +161,28 @@ server.get("/search", (req,res) => {
         const total = rows.length
 
         // MOSTRAR A PAGINA HTML COM OS DADOS DO BANCO DE DADOS
-        return res.render("search-results.html", { places: rows, total})
+        return res.render("search-results.html", { places: rows, total })
     })
 })
 
 server.get("/search/:id", function(req,res) {
+
     const id = req.params.id;
+
     const query = `
         DELETE FROM places where id = ${id};
     `;
   
     db.run(query, function(err) {
-      if(err) {
-        console.log(err);
-        return res.send("Erro ao deletar no banco de dados!");
-      }
-  
-      return res.redirect('/');
+        if(err) {
+            console.log(err);
+            return res.send("Erro ao deletar no banco de dados!");
+        }
+
+        return res.redirect("/")
     })
-  })
+})
+
 
 
 
