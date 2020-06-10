@@ -39,13 +39,13 @@ To clone and run this application, you'll need [Git](https://gitforwindows.org/)
 ### Install NLW
 ```bash
 
-# Go into the NLW path
-$ cd NLW
+# Go into the Ecoleta path
+$ cd Ecoleta
 
 # Install dependencies
 $ npm install
 
-# Run the NLW
+# Run the Ecoleta
 $ npm start
 ```
 
