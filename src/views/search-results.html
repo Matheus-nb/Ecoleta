@@ -26,16 +26,15 @@
                 {% for place in places %}
                     <div class="card">
                         <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <div id="ED">
+                            <a href="/search/{{ place.id }}" type="button">
+                                <span id="delet"></span>
+                            </a>
                         
-                        <a href="/search/{{ place.id }}" type="button">
-                            <span id="delet"></span>
-                            Delet
-                        </a>
-                        
-                        <a href="/edit/{{ place.id }}">
-                            <span id="edit"></span>
-                            Edit
-                        </a>
+                            <a href="/edit/{{ place.id }}">
+                                <span id="edit"></span>
+                            </a>
+                        </div>
                         <h1>{{ place.name }}</h2>
                         <h3>{{ place.items }}</h3>
                         <p>
@@ -45,6 +44,7 @@
                             <br/>
                             {{ place.address2 }}
                         </p>
+                        
                     </div>
                 {% endfor %}
 
